@@ -1,0 +1,111 @@
+<html>
+
+<head>
+    <link rel="stylesheet" href="form.css">
+
+</head>
+
+<body>
+
+    </br>
+    </br>
+    <form>
+
+        <table>
+
+            <tr>
+                <td> <label>First_Name:</label></td>
+                <td> <input type="text" name="first" id="firstname" onblur="checkforfirstname()">
+                </td>
+                <td>
+                </td>
+                <td>
+                    <div id="mydiv">
+                        <!-- <a href="JavaScript:#mydiv.close()">Close</a> -->
+                        <span class="close" href="#">&times;</span>
+                        <div id="mydivheader">
+
+                            <span id="username"></span>
+                        </div>
+                    </div>
+
+                </td>
+
+
+            </tr><br/>
+            <tr>
+                <td><label>Last_Name:</label></td>
+                <td>
+                    <input type="text" name="last" id="lastname" onblur="checkforlastname()">
+                </td>
+                <td>
+                    <span id="username"></span>
+
+
+                </td>
+            </tr>
+            <tr>
+                <td><label>DOB:</label></td>
+                <td> <input type="date " name="date " step="1 " max="1997-12-31 ">
+                </td>
+
+            </tr>
+            <tr>
+                <td><label>Age:</label></td>
+                <td> <input type="number " name="age " min="21 " max="100 " step="1 ">
+                </td>
+
+            </tr>
+            <tr>
+                <td><label>Email:</label></td>
+                <td> <input type="email " name="email " id="email " onblur="validateemail() ">
+                </td>
+                <td>
+                    <div class="pop "><span id="mails "></span></div>
+                </td>
+            </tr>
+            <tr>
+                <td> <label>Confirm:</label></td>
+                <td> <input type="email " name="Confirmemail " id="crosscheck " onblur="confirmmail() ">
+                </td>
+                <td>
+                    <div class="pop "><span id="con "></span></div>
+                </td>
+            </tr>
+
+            <tr>
+                <td><label>Phoneno.</label></td>
+                <td> <input type="number " max=10 name="Phoneno " onblur="phonenumber() ">
+                </td>
+                <td>
+                    <div class="pop "><span id="phones "></span></div>
+                </td>
+            </tr>
+            <tr>
+                <td><label>Life Goals</label></td>
+                <td> <textarea maxlength="150 " name="goals "></textarea>
+                </td>
+
+            </tr>
+            <tr>
+                <td><label>Hobbies</label></td>
+                <td><input type="text " name="hobbies " list="l2 "><datalist id="l2 ">
+                                    <option>Dancing</option>
+                                    <option>Singing</option>
+                                    <option>Drawing</option>
+                                    <option>Painting</option>
+                                    <option>Watching Movie</option>
+                                    <option>Collecting money</option>
+                                    <option>Playing</option>
+                                    <option>Choreographing</option>
+                            </datalist>
+                </td>
+            </tr>
+
+
+        </table>
+        <script src="form.js"></script>
+    </form>
+</body>
+
+</html>

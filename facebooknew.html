@@ -1,0 +1,169 @@
+<html>
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="facebooknew.css">
+    <!--   <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/weather-icons/2.0.9/css/weather-icons.min.css">
+    <link rel="stylesheet" type="text/css" href="http://erikflowers.github.io/weather-icons/">
+ -->
+</head>
+
+<body>
+    <div class="header">
+
+        <button class="face" id="myBtn"><h1>facebook</h1></button>
+    </div>
+    <!-- when loading show spinner display block visible , when we get responsse, display =none -->
+    <!-- <div id="myModel" class="modal" src="giphy.gif">
+    </div> -->
+
+    <div id="myModal" class="modal">
+
+        <div class="modal-content">
+            <!-- <span class="close" href="#">&times;</span> -->
+            <!-- <span class="close">&times;</span> -->
+            <!-- <img src="clouds.jpg" STYLE="WIDTH:100%;HEIGHT:15%;position: relative"> -->
+            <p id="location" style="font-size:30px;font-family:Arial, Helvetica, sans-serif;"></p>
+            <span id="main" style="font-size: 15px;color:rgb(110, 108, 108);font-family: Arial, Helvetica, sans-serif;"></span>
+            <img id="icon" width="40%" height="20%" src="codes/200.png" align="right" hspace="30" vspace="50" alt="check" />
+            <table class="table1">
+                <tr>
+                    <td>
+                        <span id="temperature" style="font-size:70px;font-weight:lighter;font-family:Arial, Helvetica, sans-serif;color: rgb(49, 49, 49);"></span>
+                        <span style="font-size:65px;font-weight: lighter; font-family: Arial, Helvetica, sans-serif;color: rgb(49, 49, 49);"><sup
+                            style=" font-family:Verdana, Geneva, Tahoma, sans-serif;color: rgb(49, 49, 49), !important;">&#8451;</sup></span>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <img src="wind.png" align="left" height=20>
+
+                        <span id="wind">44</span>mph<span id="direction">N</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td> <img src="humid.jpg" align="left" height=20>
+
+                        <span id="humidity"></span> &percnt;
+
+                    </td>
+                </tr>
+                <tr>
+                    <td> <img src="latlng.jpg" align="left" height=20>
+
+                        <span id="lat"></span>&deg;
+
+                    </td>
+                </tr>
+                <tr>
+                    <td> <img src="latlng.jpg" align="left" height=20>
+
+                        <span id="pressure">0</span>hpa
+
+                    </td>
+                </tr>
+            </table>
+            <span class="close" id="clo"></span>
+        </div>
+
+    </div>
+
+    <div class="row">
+        <div class="side">
+            <br><br>
+            <h2>Facebook helps you connect and share with the<br> people in your life</h2>
+            <img src="face.png" style="height:200px;justify-content:flex-end;align-items: flex-end;margin-left:20%">
+        </div>
+        <div class="main">
+            <form>
+                <table>
+                    <tr>
+                        <td> <label>First_Name:</label></td>
+                        <td> <input type="text" name="first" id="firstname" onblur="checkforfirstname()">
+                        </td>
+                        <td>
+
+                            <span id="username"></span>
+
+                        </td>
+                    </tr>
+                    <br/>
+                    <tr>
+                        <td><label>Last_Name:</label></td>
+                        <td>
+                            <input type="text" name="last" id="lastname" onblur="checkforlastname()">
+                        </td>
+                        <td>
+                            <span id="username1"></span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><label>DOB:</label></td>
+                        <td> <input type="date" name="date" step="1" max="1997-12-31">
+                        </td>
+
+                    </tr>
+                    <tr>
+                        <td><label>Age:</label></td>
+                        <td>
+                            <input type="number" name="age" min="21" max="100" step="1">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><label>Email:</label></td>
+                        <td> <input type="email" name="email" id="email" onblur="validateemail()">
+                        </td>
+                        <td>
+                            <span id="mails"></span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td> <label>Confirm:</label></td>
+                        <td> <input type="email" name="Confirmemail" id="crosscheck" onblur="confirmmail()">
+                        </td>
+                        <td>
+                            <span id="con"></span>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td><label>Life Goals</label></td>
+                        <td> <textarea maxlength="150" name="goals"></textarea>
+                        </td>
+
+                    </tr>
+                    <tr>
+                        <td><label>Hobbies</label></td>
+                        <td><input type="text" name="hobbies" list="l2"><datalist id="l2">
+                                        <option>Dancing</option>
+                                        <option>Singing</option>
+                                        <option>Drawing</option>
+                                        <option>Painting</option>
+                                        <option>Watching Movie</option>
+                                        <option>Collecting money</option>
+                                        <option>Playing</option>
+                                        <option>Choreographing</option>
+                                </datalist>
+                        </td>
+                    </tr>
+                </table>
+                <p class="btn">
+                    <button class="btn1">RESET</button>
+                    <button class="btn2" onclick="button1()">SUBMIT</button>
+
+                </p>
+
+                <div id="mydiv">
+                    <div id="mydivheader">
+                        modal body
+                    </div>
+                </div>
+            </form>
+            <script src="facebooknew.js "></script>
+        </div>
+
+    </div>
+    </div>
+</body>
+
+</html>
