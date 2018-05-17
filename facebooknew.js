@@ -1,8 +1,5 @@
 var modal = document.getElementById('myModal');
-
 var face = document.getElementById("myBtn");
-
-
 face.onclick = function() {
     modal.style.display = "block";
 
@@ -10,17 +7,8 @@ face.onclick = function() {
 window.onclick = function(event) {
     if (event.target == modal) {
         modal.style.display = "none";
-        location.reload();
     }
 }
-var window = document.getElementById("clo");
-if (window.onclick) {
-    modal.style.display = "none";
-}
-
-/* window.onclick = function() {
-    location.reload();
-} */
 
 //Getting API Key//
 var APPID = "9255cdccfab1422f15ed5016615fc92b";
@@ -37,8 +25,8 @@ var main;
 function update(weather) {
     icon.src = "codes/" + weather.code + ".png"
     humidity.innerHTML = weather.humidity;
-    wind.innerHtml = weather.wind;
-    direction.innerHTML = weather.direction;
+    /* wind.innerHtml = weather.wind;
+    direction.innerHTML = weather.direction; */
     loc.innerHTML = weather.location;
     temp.innerHTML = weather.temp;
     lat.innerHTML = weather.lat;
@@ -46,13 +34,14 @@ function update(weather) {
     main.innerHTML = weather.main;
 }
 
-window.onclick = function() {
+
+window.onload = function() {
         temp = document.getElementById("temperature");
         loc = document.getElementById("location");
         icon = document.getElementById("icon");
         humidity = document.getElementById("humidity");
-        wind = document.getElementById("wind");
-        direction = document.getElementById("direction");
+        /* wind = document.getElementById("wind");
+        direction = document.getElementById("direction"); */
         lat = document.getElementById("lat");
         pressure = document.getElementById("pressure");
 
@@ -64,10 +53,8 @@ window.onclick = function() {
             }
             navigator.geolocation.getCurrentPosition(showPosition);
         } else {
-            /* var zip = window.prompt("Could not discover your location. What is your zip code?");
-            updateByZip(zip); */
-
-
+            var zip = window.prompt("Could not discover your location. What is your zip code?");
+            updateByZip(zip);
         }
     }
     /* NEW */
@@ -96,13 +83,12 @@ function sendRequest(url) {
             var weather = {};
             weather.code = data.weather[0].id;
             weather.humidity = data.main.humidity;
-            weather.wind = data.wind.speed;
+            /*  weather.wind = data.wind.speed; */
             weather.lat = data.coord.lat;
             weather.pressure = (data.main.pressure);
-
             weather.main = data.weather[0].main;
             /* NEW */
-            weather.direction = degreesToDirection(data.wind.deg)
+            /*  weather.direction = degreesToDirection(data.wind.deg); */
             weather.location = data.name;
             /* NEW */
             weather.temp = K2C(data.main.temp);
@@ -141,29 +127,34 @@ function K2C(k) {
 }
 //Validations for FirstName//
 function checkforfirstname() {
-    /* var see = new Array(); */
     var a = document.getElementById("firstname").value;
+    var b = document.getElementById("division").value;
     if (a == "") {
         document.getElementById('username').innerHTML = "**Field Empty**";
+        document.getElementById('division').innerHTML = "Field Empty";
         return false;
 
     } else if ((a.length < 8) || (a.length > 26)) {
         document.getElementById('username').innerHTML = "**Name should have min 8 characters and max 26 characters**";
         document.getElementById('firstname').style.borderColor = "red";
+        document.getElementById('division').innerHTML = "Min 8 and max 26 characters allowed";
         return false;
 
     } else if (!isNaN(a)) {
         document.getElementById('username').innerHTML = "**Only characters are allowed**";
         document.getElementById('firstname').style.borderColor = "red";
+        document.getElementById('division').innerHTML = "Only characters are allowed in First Name";
         return false;
     } else {
         document.getElementById('username').innerHTML = "";
         document.getElementById('firstname').style.borderColor = "white";
+        document.getElementById('division').innerHTML = "";
     }
 }
 //Validations for LastName//
 function checkforlastname() {
     var a = document.getElementById("lastname").value;
+    var b = document.getElementById("division1").value;
 
     if (a == "") {
         document.getElementById('username1').innerHTML = "";
@@ -171,14 +162,18 @@ function checkforlastname() {
         return false;
     } else if ((a.length < 8) || (a.length > 26)) {
         document.getElementById('username1').innerHTML = "**Name should have min 8 characters and max 26 characters**";
+        document.getElementById('division1').innerHTML = "Name should have min 8 characters and max 26 characters";
         document.getElementById('lastname').style.borderColor = "red";
         return false;
     } else if (!isNaN(a)) {
         document.getElementById('username1').innerHTML = "**Only characters are allowed**";
+        document.getElementById('division1').innerHTML = "Only characters are allowed";
         document.getElementById('lastname').style.borderColor = "red";
     } else {
         document.getElementById('username1').innerHTML = "";
         document.getElementById('lastname').style.borderColor = "white";
+        document.getElementById('division1').innerHTML = "";
+
 
     }
 }
@@ -187,45 +182,117 @@ function checkforlastname() {
 function confirmmail() {
     var a = document.getElementById("email").value;
     var b = document.getElementById("crosscheck").value;
+    var c = document.getElementById("division3").value;
 
     if (b == "") {
         document.getElementById('con').innerHTML = "";
+        document.getElementById('division3').innerHTML = "";
 
 
     } else if (a != b) {
         document.getElementById('con').innerHTML = "**Email MisMatch**";
         document.getElementById('crosscheck').style.borderColor = "red";
-
+        document.getElementById('division3').innerHTML = "Email Mismatch";
     } else {
         document.getElementById('con').innerHTML = "";
         document.getElementById('crosscheck').style.borderColor = "white";
+        document.getElementById('division3').innerHTML = "";
 
     }
 }
 //Email Validation//
 function validateemail() {
     var a = document.getElementById("email").value;
+    var b = document.getElementById("division2").value;
 
     if (a == "") {
         document.getElementById('mails').innerHTML = "";
-
-
+        document.getElementById('division2').innerHTML = "";
     } else if (a.indexOf('@') <= 0) {
         document.getElementById('mails').innerHTML = "**Invalid email id**";
         document.getElementById('email').style.borderColor = "red";
-
+        document.getElementById('division2').innerHTML = "Invalid email id";
     } else if ((a.charAt(a.length - 4) != '.') && (a.charAt(a.length - 3) != '.')) {
         document.getElementById('mails').innerHTML = "**Give Proper format**";
         document.getElementById('email').style.borderColor = "red";
-
+        document.getElementById('division2').innerHTML = "Give Proper Format";
     } else {
         document.getElementById('mails').innerHTML = "";
         document.getElementById('email').style.borderColor = "white";
-
+        document.getElementById('division2').innerHTML = "";
     }
 }
 
-//Make the DIV element draggagle:
+function button1() {
+    location.reload();
+}
+
+function button2(myform) {
+    /* console.log('log 1', myform); */
+    /* var a = document.forms["myform"].getElementsByTagName("input"); */
+    if (document.forms["myform"].getElementsByTagName("input").value) {
+        /*  document.getElementById("mydiv").style.display = "none";
+         document.getElementById("mydivheader").style.display = "none";
+         document.getElementById("closing").style.display = "none";
+         var dataToSave = document.getElementById('firstname').value;
+         localStorage.setItem("data", dataToSave);
+         localStorage.getItem("data");
+         var dataToSave = document.getElementById('lastname').value;
+         localStorage.setItem("data1", dataToSave);
+         localStorage.getItem("data1");
+         var dataToSave = document.getElementById('dob').value;
+         localStorage.setItem("data2", dataToSave);
+         localStorage.getItem("data2");
+         var dataToSave = document.getElementById('age').value;
+         localStorage.setItem("data3", dataToSave);
+         localStorage.getItem("data3");
+         var dataToSave = document.getElementById('email').value;
+         localStorage.setItem("data3", dataToSave);
+         localStorage.getItem("data3");
+         var dataToSave = document.getElementById('goal').value;
+         localStorage.setItem("data4", dataToSave);
+         localStorage.getItem("data4");
+         var dataToSave = document.getElementById('hob').value;
+         localStorage.setItem("data5", dataToSave);
+         localStorage.getItem("data5"); */
+        alert("Clicked");
+
+    } else {
+        document.getElementById("mydiv").style.display = "block";
+    }
+}
+// if (document.forms["myform"].value == true) {
+//     document.getElementById("mydiv").style.display = "block";
+// } else {
+//     var dataToSave = document.getElementById('firstname').value;
+//     localStorage.setItem("data", dataToSave);
+//     localStorage.getItem("data");
+//     var dataToSave = document.getElementById('lastname').value;
+//     localStorage.setItem("data1", dataToSave);
+//     localStorage.getItem("data1");
+//     var dataToSave = document.getElementById('dob').value;
+//     localStorage.setItem("data2", dataToSave);
+//     localStorage.getItem("data2");
+//     var dataToSave = document.getElementById('age').value;
+//     localStorage.setItem("data3", dataToSave);
+//     localStorage.getItem("data3");
+//     var dataToSave = document.getElementById('email').value;
+//     localStorage.setItem("data3", dataToSave);
+//     localStorage.getItem("data3");
+//     var dataToSave = document.getElementById('goal').value;
+//     localStorage.setItem("data4", dataToSave);
+//     localStorage.getItem("data4");
+//     var dataToSave = document.getElementById('hob').value;
+//     localStorage.setItem("data5", dataToSave);
+//     localStorage.getItem("data5");
+// }
+
+var a = document.getElementById("close");
+var b = document.getElementById("mydiv")
+a.onclick = function() {
+        b.style.display = "none";
+    }
+    //Make the DIV element draggagle:
 dragElement(document.getElementById(("mydiv")));
 
 function dragElement(elmnt) {
@@ -233,9 +300,9 @@ function dragElement(elmnt) {
         pos2 = 0,
         pos3 = 0,
         pos4 = 0;
-    if (document.getElementById(elmnt.id)) {
+    if (document.getElementById(elmnt.id + "header")) {
         /* if present, the header is where you move the DIV from:*/
-        document.getElementById(elmnt.id).onmousedown = dragMouseDown;
+        document.getElementById(elmnt.id + "header").onmousedown = dragMouseDown;
     } else {
         /* otherwise, move the DIV from anywhere inside the DIV:*/
         elmnt.onmousedown = dragMouseDown;
@@ -269,23 +336,3 @@ function dragElement(elmnt) {
         document.onmousemove = null;
     }
 }
-
-/* btn2.onclick = function() {
-    document.getElementById("mydiv").style.display = "block";
-    
-} */
-function button1() {
-
-    document.getElementById("mydiv").style.display = "block";
-
-}
-
-
-
-
-/* function f1() {
-
-
-    alert(document.getElementById('username').innerHTML + '/n' + document.getElementById('username1').innerHTML + '/n' +
-        document.getElementById('con').innerHTML + '/n' + document.getElementById('mails').innerHTML);
-} */
